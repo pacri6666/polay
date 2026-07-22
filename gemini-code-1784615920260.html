@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKJ Portfolio - Fachri Ahmad Suherman</title>
+    
+    <!-- Font Cyber & Tech dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Ikon Media Sosial & Kontak -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==============================
+           Variabel Warna Cyber Neon
+           ============================== */
+        :root {
+            --bg-dark: #040711;
+            --card-bg: rgba(10, 16, 31, 0.8);
+            --cyan-neon: #00f3ff;
+            --magenta-neon: #ff007f;
+            --green-neon: #00ff66;
+            --purple-neon: #a855f7;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; padding: 0; 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Background Animated Grid Matrix Jaringan */
+        .cyber-grid {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        /* Sphere Glow Background */
+        .glow-1 {
+            position: fixed; top: -15%; left: -10%; width: 55vw; height: 55vw;
+            background: radial-gradient(circle, rgba(0, 243, 255, 0.18) 0%, transparent 70%);
+            z-index: -1; pointer-events: none;
+        }
+        .glow-2 {
+            position: fixed; bottom: -15%; right: -10%; width: 55vw; height: 55vw;
+            background: radial-gradient(circle, rgba(255, 0, 127, 0.15) 0%, transparent 70%);
+            z-index: -1; pointer-events: none;
+        }
+
+        /* ==============================
+           Header Navigasi High-Tech
+           ============================== */
+        header { 
+            background: rgba(4, 7, 17, 0.85); 
+            backdrop-filter: blur(15px);
+            padding: 1.2rem 8%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.25);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.15);
+        }
+
+        .logo { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 1.5rem; font-weight: 900; color: #fff;
+            letter-spacing: 2px;
+        }
+        .logo span { color: var(--cyan-neon); text-shadow: 0 0 12px var(--cyan-neon); }
+
+        nav a { 
+            color: var(--text-light); text-decoration: none; margin-left: 2rem; 
+            font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 600; 
+            letter-spacing: 1.5px; transition: var(--transition);
+        }
+        nav a:hover { 
+            color: var(--cyan-neon); 
+            text-shadow: 0 0 10px var(--cyan-neon);
+        }
+
+        .container { max-width: 1150px; margin: 130px auto 4rem auto; padding: 0 2rem; }
+
+        /* ==============================
+           Tombol & Efek Neon Cyber
+           ============================== */
+        .btn-neon { 
+            background: rgba(0, 243, 255, 0.05); color: var(--cyan-neon); 
+            border: 2px solid var(--cyan-neon);
+            padding: 10px 24px; border-radius: 4px; 
+            cursor: pointer; font-family: 'Orbitron', sans-serif;
+            font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px;
+            transition: var(--transition); text-decoration: none; display: inline-block;
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.3), inset 0 0 12px rgba(0, 243, 255, 0.15);
+            text-transform: uppercase; position: relative; overflow: hidden;
+        }
+
+        .btn-neon:hover { 
+            background: var(--cyan-neon); color: #000;
+            box-shadow: 0 0 30px var(--cyan-neon), inset 0 0 20px var(--cyan-neon);
+            transform: translateY(-3px);
+        }
+
+        .btn-magenta {
+            color: var(--magenta-neon); border-color: var(--magenta-neon);
+            box-shadow: 0 0 12px rgba(255, 0, 127, 0.3), inset 0 0 12px rgba(255, 0, 127, 0.15);
+        }
+        .btn-magenta:hover {
+            background: var(--magenta-neon); color: #fff;
+            box-shadow: 0 0 30px var(--magenta-neon), inset 0 0 20px var(--magenta-neon);
+        }
+
+        /* ==============================
+           Hero / Profile Section
+           ============================== */
+        @keyframes pulseBorder {
+            0%, 100% { 
+                box-shadow: 0 0 20px var(--cyan-neon), 0 0 40px rgba(0, 243, 255, 0.4);
+                border-color: var(--cyan-neon);
+            }
+            50% { 
+                box-shadow: 0 0 35px var(--magenta-neon), 0 0 60px rgba(255, 0, 127, 0.4);
+                border-color: var(--magenta-neon);
+            }
+        }
+
+        .hero { 
+            display: flex; align-items: center; justify-content: space-between; gap: 3.5rem;
+            min-height: 70vh; margin-bottom: 6rem;
+        }
+
+        .hero-content { flex: 1.3; }
+
+        .badge-tkj {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 243, 255, 0.1); border: 1px solid var(--cyan-neon); 
+            color: var(--cyan-neon); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem;
+            font-family: 'Orbitron', sans-serif; letter-spacing: 2px;
+            margin-bottom: 1.5rem; box-shadow: 0 0 12px rgba(0, 243, 255, 0.25);
+        }
+
+        .hero h1 { 
+            font-family: 'Orbitron', sans-serif; font-size: 3.2rem; margin: 0 0 0.5rem 0; 
+            line-height: 1.15; font-weight: 900;
+        }
+        .hero h1 span { 
+            color: var(--cyan-neon); 
+            text-shadow: 0 0 18px var(--cyan-neon); 
+        }
+
+        .hero h3 { 
+            color: var(--magenta-neon); margin: 0 0 1.5rem 0; font-family: 'Rajdhani', sans-serif;
+            font-weight: 700; font-size: 1.5rem; letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.5); text-transform: uppercase;
+        }
+
+        .hero p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2rem; max-width: 90%; }
+
+        .hero-image-wrapper { 
+            flex: 1; text-align: center; position: relative; 
+        }
+
+        .hero-image-wrapper img { 
+            width: 100%; max-width: 330px; aspect-ratio: 3/4; object-fit: cover; 
+            border-radius: 16px;
+            animation: pulseBorder 4s infinite;
+            border: 2px solid var(--cyan-neon);
+            transition: var(--transition);
+        }
+
+        .hero-image-wrapper img:hover {
+            transform: scale(1.04) rotate(1deg);
+        }
+
+        /* Bar Social Media */
+        .social-bar {
+            display: flex; gap: 15px; margin-top: 2rem; flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 48px; height: 48px; border-radius: 10px;
+            background: var(--card-bg); border: 1px solid rgba(0, 243, 255, 0.3);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--cyan-neon); font-size: 1.3rem; text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--cyan-neon); color: #000;
+            box-shadow: 0 0 20px var(--cyan-neon);
+            transform: translateY(-5px);
+        }
+
+        /* ==============================
+           Section Title & Grid
+           ============================== */
+        .section-title { 
+            font-family: 'Orbitron', sans-serif; font-size: 2.2rem; margin-bottom: 3.5rem; 
+            text-align: center; color: #fff; text-transform: uppercase; letter-spacing: 3px;
+        }
+        .section-title span { 
+            color: var(--cyan-neon); text-shadow: 0 0 15px var(--cyan-neon); 
+        }
+
+        /* Card Keahlian TKJ */
+        .skills-container { 
+            display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin-bottom: 6rem;
+        }
+
+        .skill-card { 
+            background: var(--card-bg); border: 1px solid rgba(0, 243, 255, 0.25);
+            padding: 14px 28px; border-radius: 8px; font-size: 1rem; color: #fff;
+            letter-spacing: 1px; transition: var(--transition);
+            backdrop-filter: blur(12px); display: flex; align-items: center; gap: 12px;
+            font-family: 'Rajdhani', sans-serif; font-weight: 600;
+        }
+
+        .skill-card i { color: var(--green-neon); text-shadow: 0 0 8px var(--green-neon); font-size: 1.2rem; }
+
+        .skill-card:hover { 
+            border-color: var(--cyan-neon); 
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5); 
+            transform: translateY(-4px); 
+        }
+
+        /* Grid Proyek */
+        .projects-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-bottom: 6rem;
+        }
+
+        .project-card { 
+            background: var(--card-bg); padding: 2.2rem; border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            transition: var(--transition); position: relative; backdrop-filter: blur(12px);
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--cyan-neon), var(--magenta-neon));
+            opacity: 0.6; transition: var(--transition);
+        }
+
+        .project-card:hover { 
+            transform: translateY(-8px); 
+            border-color: var(--magenta-neon);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.35);
+        }
+
+        .project-card:hover::before { opacity: 1; }
+
+        .project-tag {
+            display: inline-block; font-size: 0.75rem; color: var(--green-neon);
+            border: 1px solid var(--green-neon); padding: 3px 10px; border-radius: 4px;
+            margin-bottom: 12px; font-family: 'Orbitron', sans-serif; font-weight: 600;
+        }
+
+        .project-card h3 { 
+            font-family: 'Orbitron', sans-serif; font-size: 1.35rem; 
+            color: #fff; margin-top: 0; margin-bottom: 1rem;
+        }
+
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* ==============================
+           Kontak Section Neon
+           ============================== */
+        .contact-box {
+            background: var(--card-bg); border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 16px; padding: 3.5rem 2rem; text-align: center;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.12);
+            backdrop-filter: blur(12px);
+        }
+
+        .contact-grid {
+            display: flex; justify-content: center; gap: 3.5rem; flex-wrap: wrap; margin-top: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex; align-items: center; gap: 15px; color: var(--text-light);
+            text-decoration: none; font-size: 1.15rem; font-family: 'Rajdhani', sans-serif;
+            font-weight: 600; transition: var(--transition); letter-spacing: 1px;
+        }
+
+        .contact-item i {
+            font-size: 2rem; color: var(--cyan-neon); text-shadow: 0 0 12px var(--cyan-neon);
+        }
+
+        .contact-item:hover {
+            color: var(--cyan-neon); transform: scale(1.06);
+        }
+
+        /* ==============================
+           Modal Edit Form
+           ============================== */
+        .modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(12px);
+            z-index: 1000; justify-content: center; align-items: center; 
+        }
+
+        .modal-content { 
+            background: #080d1a; padding: 2.5rem; width: 90%; max-width: 700px; 
+            max-height: 85vh; overflow-y: auto; border: 1px solid var(--cyan-neon);
+            border-radius: 10px; box-shadow: 0 0 35px rgba(0, 243, 255, 0.35);
+        }
+
+        .modal-content::-webkit-scrollbar { width: 8px; }
+        .modal-content::-webkit-scrollbar-track { background: #040711; }
+        .modal-content::-webkit-scrollbar-thumb { background: var(--cyan-neon); }
+
+        .modal-header { 
+            font-family: 'Orbitron', sans-serif; color: var(--cyan-neon); 
+            font-size: 1.5rem; margin-top: 0; border-bottom: 1px solid rgba(0, 243, 255, 0.25); 
+            padding-bottom: 15px;
+        }
+
+        .form-section-title { 
+            color: var(--magenta-neon); font-family: 'Orbitron', sans-serif; 
+            font-size: 0.9rem; margin: 1.8rem 0 1rem 0; letter-spacing: 1px;
+        }
+
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;}
+        .form-group input, .form-group textarea { 
+            width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.25); color: #fff; 
+            font-family: inherit; font-size: 0.95rem; box-sizing: border-box; transition: var(--transition);
+            border-radius: 6px;
+        }
+        .form-group input:focus, .form-group textarea:focus { 
+            outline: none; border-color: var(--cyan-neon); 
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.35);
+        }
+
+        .modal-footer { 
+            display: flex; justify-content: flex-end; gap: 15px; margin-top: 2.5rem; 
+            padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer { text-align: center; padding: 3rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); font-size: 0.85rem;}
+
+        /* Responsif HP */
+        @media (max-width: 850px) {
+            .hero { flex-direction: column-reverse; text-align: center; }
+            .hero-content { width: 100%; }
+            .hero h1 { font-size: 2.4rem; }
+            .hero p { max-width: 100%; }
+            header { padding: 1rem 5%; }
+            nav { display: none; }
+            .social-bar { justify-content: center; }
+            .contact-grid { flex-direction: column; gap: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animasi Background Cyber Grid & Glow Spheres -->
+    <div class="cyber-grid"></div>
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+
+    <!-- Header & Navigasi -->
+    <header>
+        <div class="logo">FACHRI<span>.TKJ</span></div>
+        <nav>
+            <a href="#profil">PROFIL</a>
+            <a href="#keahlian">KEAHLIAN</a>
+            <a href="#proyek">PROYEK</a>
+            <a href="#kontak">KONTAK</a>
+        </nav>
+        <button class="btn-neon" onclick="bukaModal()">⚙️ EDIT WEB</button>
+    </header>
+
+    <div class="container">
+        
+        <!-- Section Profil (Hero) -->
+        <section id="profil" class="hero">
+            <div class="hero-content">
+                <div class="badge-tkj"><i class="fa-solid fa-network-wired"></i> TKJ NETWORK SPECIALIST</div>
+                <h1 id="view-nama">Fachri Ahmad <br><span>Suherman</span></h1>
+                <h3 id="view-peran">Network Engineer & System Administrator Support</h3>
+                <p id="view-bio">Siswa/Praktisi Teknik Komputer dan Jaringan yang antusias dengan dunia IT Infrastructure, konfigurasi jaringan Mikrotik & Cisco, manajemen server Linux/Windows, serta perakitan & pemeliharaan sistem perangkat keras.</p>
+                
+                <div>
+                    <a href="#kontak" class="btn-neon">Hubungi Saya</a>
+                    <a href="#proyek" class="btn-neon btn-magenta" style="margin-left: 10px;">Lihat Proyek</a>
+                </div>
+
+                <!-- Tautan Social Media -->
+                <div class="social-bar">
+                    <a href="https://wa.me/6288294718590" target="_blank" class="social-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.tiktok.com/@fachriahmedd" target="_blank" class="social-icon" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/fcriahmdshrmn?utm_source=qr&igsh=NGc0eG1nOTAxdWJ3" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1bPeRmxdSC/" target="_blank" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <!-- Foto Profil -->
+            <div class="hero-image-wrapper">
+                <img id="view-foto" src="WhatsApp Image 2026-07-21 at 12.09.33.jpeg" alt="Fachri Ahmad Suherman">
+            </div>
+        </section>
+
+        <!-- Section Keahlian -->
+        <section id="keahlian">
+            <h2 class="section-title">Keahlian <span>Teknis TKJ</span></h2>
+            <div id="view-keahlian" class="skills-container">
+                <!-- Diisi via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section Proyek TKJ -->
+        <section id="proyek">
+            <h2 class="section-title">Proyek & <span>Praktikum</span></h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <span class="project-tag">NETWORK & ROUTING</span>
+                    <h3 id="view-p1-judul">Mikrotik Bandwidth Management & Hotspot</h3>
+                    <p id="view-p1-desc">Konfigurasi Mikrotik RouterOS untuk manajemen alokasi bandwidth (Simple Queue), pembagian subnetting VLAN, serta pembuatan sistem portal Login Hotspot untuk jaringan sekolah/kantor.</p>
+                </div>
+                
+                <div class="project-card">
+                    <span class="project-tag">SERVER ADMINISTRATION</span>
+                    <h3 id="view-p2-judul">Linux Debian Server Infrastructure</h3>
+                    <p id="view-p2-desc">Pengaturan dan manajemen server Linux Debian meliputi konfigurasi DNS Server (BIND9), Web Server (Apache/Nginx), Mail Server, dan Samba File Sharing.</p>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-tag">HARDWARE & FIBER OPTIC</span>
+                    <h3 id="view-p3-judul">Instalasi Kabel LAN & Splicing Fiber Optic</h3>
+                    <p id="view-p3-desc">Pemasangan dan pengkabelan struktur UTP (Crimping RJ45), penyambungan kabel Fiber Optic menggunakan Fusion Splicer, serta pengujian konektivitas menggunakan Optical Power Meter (OPM).</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section Kontak -->
+        <section id="kontak">
+            <div class="contact-box">
+                <h2 class="section-title" style="margin-bottom: 1rem;">Mari <span>Koneksi</span></h2>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem auto;">Buka untuk kolaborasi proyek jaringan, maintenance sistem IT, maupun peluang karir profesional.</p>
+                
+                <div class="contact-grid">
+                    <a href="https://wa.me/6288294718590" target="_blank" class="contact-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span id="view-hp">088294718590</span>
+                    </a>
+                    <a href="mailto:fachriahmad030509@gmail.com" class="contact-item">
+                        <i class="fa-regular fa-envelope"></i>
+                        <span id="view-email">fachriahmad030509@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; <span id="year"></span> Fachri Ahmad Suherman - Portofolio TKJ Neon. All Rights Reserved.
+    </footer>
+
+    <!-- Modal Form Edit Konten -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal-header">Edit Data Portofolio</h2>
+            
+            <h3 class="form-section-title">[ INFORMASI PROFIL ]</h3>
+            <div class="form-group"><label>Nama Lengkap (Gunakan &lt;br&gt;&lt;span&gt; untuk efek neon nama belakang):</label><input type="text" id="input-nama"></div>
+            <div class="form-group"><label>Profesi / Spesialisasi:</label><input type="text" id="input-peran"></div>
+            <div class="form-group"><label>Biografi Singkat:</label><textarea id="input-bio" rows="3"></textarea></div>
+            <div class="form-group"><label>Nama File Foto / Link Foto:</label><input type="text" id="input-foto"></div>
+
+            <h3 class="form-section-title">[ KONTAK ]</h3>
+            <div class="form-group"><label>No HP / WhatsApp:</label><input type="text" id="input-hp"></div>
+            <div class="form-group"><label>Email:</label><input type="text" id="input-email"></div>
+
+            <h3 class="form-section-title">[ KEAHLIAN TEKNIS (Pisahkan dengan koma) ]</h3>
+            <div class="form-group">
+                <input type="text" id="input-keahlian" placeholder="Contoh: Mikrotik RouterOS, Cisco CCNA, Linux Debian, Fiber Optic, Hardware Repair">
+            </div>
+
+            <h3 class="form-section-title">[ PROYEK & PRAKTIKUM ]</h3>
+            <div style="display: grid; gap: 15px;">
+                <div style="padding: 12px; border: 1px solid rgba(0,243,255,0.25); background: rgba(0,0,0,0.3);">
+                    <div class="form-group"><label>Judul Proyek 01:</label><input type="text" id="input-p1-judul"></div>
+                    <div class="form-group"><label>Deskripsi Proyek 01:</label><textarea id="input-p1-desc" rows="2"></textarea></div>
+                </div>
+                <div style="padding: 12px; border: 1px solid rgba(0,243,255,0.25); background: rgba(0,0,0,0.3);">
+                    <div class="form-group"><label>Judul Proyek 02:</label><input type="text" id="input-p2-judul"></div>
+                    <div class="form-group"><label>Deskripsi Proyek 02:</label><textarea id="input-p2-desc" rows="2"></textarea></div>
+                </div>
+                <div style="padding: 12px; border: 1px solid rgba(0,243,255,0.25); background: rgba(0,0,0,0.3);">
+                    <div class="form-group"><label>Judul Proyek 03:</label><input type="text" id="input-p3-judul"></div>
+                    <div class="form-group"><label>Deskripsi Proyek 03:</label><textarea id="input-p3-desc" rows="2"></textarea></div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-neon btn-magenta" onclick="tutupModal()">BATAL</button>
+                <button class="btn-neon" onclick="simpanData()">SIMPAN & PERBARUI</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Logika JavaScript -->
+    <script>
+        document.getElementById("year").innerText = new Date().getFullYear();
+
+        // Data Default Khusus Fachri Ahmad Suherman (TKJ)
+        const dataDefault = {
+            nama: "Fachri Ahmad <br><span>Suherman</span>",
+            peran: "Network Engineer & System Administrator Support",
+            bio: "Siswa/Praktisi Teknik Komputer dan Jaringan yang antusias dengan dunia IT Infrastructure, konfigurasi jaringan Mikrotik & Cisco, manajemen server Linux/Windows, serta perakitan & pemeliharaan sistem perangkat keras.",
+            foto: "WhatsApp Image 2026-07-21 at 12.09.33.jpeg",
+            hp: "088294718590",
+            email: "fachriahmad030509@gmail.com",
+            keahlian: "Mikrotik RouterOS, Cisco Packet Tracer, Linux Debian Server, Fiber Optic Splicing, PC Hardware Maintenance, Subnetting & VLAN, Network Troubleshooting",
+            p1_judul: "Mikrotik Bandwidth Management & Hotspot",
+            p1_desc: "Konfigurasi Mikrotik RouterOS untuk manajemen alokasi bandwidth (Simple Queue), pembagian subnetting VLAN, serta pembuatan sistem portal Login Hotspot untuk jaringan sekolah/kantor.",
+            p2_judul: "Linux Debian Server Infrastructure",
+            p2_desc: "Pengaturan dan manajemen server Linux Debian meliputi konfigurasi DNS Server (BIND9), Web Server (Apache/Nginx), Mail Server, dan Samba File Sharing.",
+            p3_judul: "Instalasi Kabel LAN & Splicing Fiber Optic",
+            p3_desc: "Pemasangan dan pengkabelan struktur UTP (Crimping RJ45), penyambungan kabel Fiber Optic menggunakan Fusion Splicer, serta pengujian konektivitas menggunakan Optical Power Meter (OPM)."
+        };
+
+        const STORAGE_KEY = "PortofolioTKJ_FachriAhmad";
+
+        function muatData() {
+            const dataMentah = localStorage.getItem(STORAGE_KEY);
+            const data = dataMentah ? JSON.parse(dataMentah) : dataDefault;
+
+            document.getElementById('view-nama').innerHTML = data.nama;
+            document.getElementById('view-peran').innerText = data.peran;
+            document.getElementById('view-bio').innerText = data.bio;
+            document.getElementById('view-foto').src = data.foto;
+            document.getElementById('view-hp').innerText = data.hp;
+            document.getElementById('view-email').innerText = data.email;
+
+            // Muat Keahlian TKJ
+            const wadahKeahlian = document.getElementById('view-keahlian');
+            wadahKeahlian.innerHTML = ''; 
+            const arrayKeahlian = data.keahlian.split(',');
+            arrayKeahlian.forEach(skill => {
+                if(skill.trim() !== "") {
+                    const div = document.createElement('div');
+                    div.className = 'skill-card';
+                    div.innerHTML = `<i class="fa-solid fa-microchip"></i> ${skill.trim()}`;
+                    wadahKeahlian.appendChild(div);
+                }
+            });
+
+            // Muat Proyek TKJ
+            document.getElementById('view-p1-judul').innerText = data.p1_judul;
+            document.getElementById('view-p1-desc').innerText = data.p1_desc;
+            document.getElementById('view-p2-judul').innerText = data.p2_judul;
+            document.getElementById('view-p2-desc').innerText = data.p2_desc;
+            document.getElementById('view-p3-judul').innerText = data.p3_judul;
+            document.getElementById('view-p3-desc').innerText = data.p3_desc;
+        }
+
+        function bukaModal() {
+            const dataMentah = localStorage.getItem(STORAGE_KEY);
+            const data = dataMentah ? JSON.parse(dataMentah) : dataDefault;
+
+            document.getElementById('input-nama').value = data.nama;
+            document.getElementById('input-peran').value = data.peran;
+            document.getElementById('input-bio').value = data.bio;
+            document.getElementById('input-foto').value = data.foto;
+            document.getElementById('input-hp').value = data.hp;
+            document.getElementById('input-email').value = data.email;
+            document.getElementById('input-keahlian').value = data.keahlian;
+            
+            document.getElementById('input-p1-judul').value = data.p1_judul;
+            document.getElementById('input-p1-desc').value = data.p1_desc;
+            document.getElementById('input-p2-judul').value = data.p2_judul;
+            document.getElementById('input-p2-desc').value = data.p2_desc;
+            document.getElementById('input-p3-judul').value = data.p3_judul;
+            document.getElementById('input-p3-desc').value = data.p3_desc;
+
+            document.getElementById('edit-modal').style.display = 'flex';
+        }
+
+        function tutupModal() {
+            document.getElementById('edit-modal').style.display = 'none';
+        }
+
+        function simpanData() {
+            const dataBaru = {
+                nama: document.getElementById('input-nama').value,
+                peran: document.getElementById('input-peran').value,
+                bio: document.getElementById('input-bio').value,
+                foto: document.getElementById('input-foto').value,
+                hp: document.getElementById('input-hp').value,
+                email: document.getElementById('input-email').value,
+                keahlian: document.getElementById('input-keahlian').value,
+                p1_judul: document.getElementById('input-p1-judul').value,
+                p1_desc: document.getElementById('input-p1-desc').value,
+                p2_judul: document.getElementById('input-p2-judul').value,
+                p2_desc: document.getElementById('input-p2-desc').value,
+                p3_judul: document.getElementById('input-p3-judul').value,
+                p3_desc: document.getElementById('input-p3-desc').value
+            };
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(dataBaru));
+            muatData();
+            tutupModal();
+        }
+
+        window.onload = muatData;
+    </script>
+</body>
+</html>
